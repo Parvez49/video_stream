@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    "video",
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Use Redis as the broker
+CELERY_ACCEPT_CONTENT = ['json']  # Message formats
+CELERY_TASK_SERIALIZER = 'json'  # Serialize tasks in JSON format
+
+# (Optional) Celery Results Backend
+CELERY_RESULT_BACKEND = 'django-db'  # Store task results in database
+CELERY_CACHE_BACKEND = 'django-cache'
