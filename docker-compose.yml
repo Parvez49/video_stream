@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Map the React development server
+    volumes:
+      - .:/app  # Mount the current directory to the container for live updates
+      - /app/node_modules  # Avoid conflicts with node_modules
+    stdin_open: true  # Keep STDIN open to handle npm start
+    tty: true  # Allocate a pseudo-TTY
