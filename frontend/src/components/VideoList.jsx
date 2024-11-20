@@ -8,7 +8,7 @@ const VideoList = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get('/api/videos/');
+        const response = await axios.get('http://localhost:8000/videos');
         setVideos(response.data);
       } catch (error) {
         console.error('Error fetching videos:', error);
